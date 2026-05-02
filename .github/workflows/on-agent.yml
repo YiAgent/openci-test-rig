@@ -1,4 +1,4 @@
-# test-rig on-agent — manual exercise of reusable/agent.yml via GLM proxy.
+# test-rig on-agent — manual exercise of agent.yml via GLM proxy.
 name: on-agent
 
 on:
@@ -21,9 +21,9 @@ permissions:
 
 jobs:
   agent:
-    uses: YiAgent/OpenCI/.github/workflows/reusable/agent.yml@v3.0.0-rc1
+    uses: YiAgent/OpenCI/.github/workflows/agent.yml@v3.0.0-rc3
     with:
-      openci-ref: v3.0.0-rc1
+      openci-ref: v3.0.0-rc3
       task:       ${{ inputs.task }}
       prompt:     ${{ inputs.prompt }}
       model:      glm-5.1

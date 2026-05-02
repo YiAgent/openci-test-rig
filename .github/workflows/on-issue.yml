@@ -1,4 +1,4 @@
-# test-rig on-issue — exercises reusable/issue.yml via GLM proxy.
+# test-rig on-issue — exercises issue.yml via GLM proxy.
 name: on-issue
 
 on:
@@ -26,9 +26,9 @@ permissions:
 jobs:
   triage:
     if: github.event_name == 'issues' || github.event_name == 'issue_comment'
-    uses: YiAgent/OpenCI/.github/workflows/reusable/issue.yml@v3.0.0-rc1
+    uses: YiAgent/OpenCI/.github/workflows/issue.yml@v3.0.0-rc3
     with:
-      openci-ref: v3.0.0-rc1
+      openci-ref: v3.0.0-rc3
       model:      glm-5.1
       mode:       ${{ inputs.mode || '' }}
     secrets:
@@ -37,14 +37,14 @@ jobs:
 
   welcome:
     if: github.event_name == 'pull_request_target' || github.event_name == 'issues'
-    uses: YiAgent/OpenCI/.github/workflows/reusable/issue.yml@v3.0.0-rc1
+    uses: YiAgent/OpenCI/.github/workflows/issue.yml@v3.0.0-rc3
     with:
-      openci-ref: v3.0.0-rc1
+      openci-ref: v3.0.0-rc3
       mode:       welcome
 
   stale-sweep:
     if: github.event_name == 'schedule'
-    uses: YiAgent/OpenCI/.github/workflows/reusable/issue.yml@v3.0.0-rc1
+    uses: YiAgent/OpenCI/.github/workflows/issue.yml@v3.0.0-rc3
     with:
-      openci-ref: v3.0.0-rc1
+      openci-ref: v3.0.0-rc3
       mode:       stale

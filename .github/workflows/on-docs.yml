@@ -1,4 +1,4 @@
-# test-rig on-docs — exercises reusable/docs.yml.
+# test-rig on-docs — exercises docs.yml.
 name: on-docs
 
 on:
@@ -16,8 +16,8 @@ permissions:
 
 jobs:
   docs:
-    uses: YiAgent/OpenCI/.github/workflows/reusable/docs.yml@v3.0.0-rc1
+    uses: YiAgent/OpenCI/.github/workflows/docs.yml@v3.0.0-rc3
     with:
-      openci-ref: v3.0.0-rc1
+      openci-ref: v3.0.0-rc3
       docs-dir:   docs
       site-dir:   site
