@@ -1,0 +1,32 @@
+# test-rig on-agent — manual exercise of reusable/agent.yml via GLM proxy.
+name: on-agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        type: string
+        required: true
+        default: claude-default
+      prompt:
+        type: string
+        required: false
+        default: "Reply with one short sentence: rig agent harness OK."
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  agent:
+    uses: YiAgent/OpenCI/.github/workflows/reusable/agent.yml@v3.0.0-rc1
+    with:
+      openci-ref: v3.0.0-rc1
+      task:       ${{ inputs.task }}
+      prompt:     ${{ inputs.prompt }}
+      model:      glm-5.1
+    secrets:
+      api-key:      ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}
