@@ -6,27 +6,28 @@ on:
     types: [opened, reopened, edited]
   issue_comment:
     types: [created]
-  schedule:
-    - cron: "0 * * * *"
   workflow_dispatch:
     inputs:
       mode:
         description: Force a specific mode through workflow_dispatch
         required: false
         type: choice
-        default: ai-triage
-        options: [sentry-triage, auto-label, dedupe, ai-triage, auto-assign]
+        default: sentry-triage
+        options: [sentry-triage, auto-label, dedupe, ai-triage, auto-assign, command, linear-branch]
 
-# Union of permissions needed across all jobs in upstream issue.yml.
 permissions:
-  contents: write       # linear-branch creates a branch
+  contents: write
   issues: write
-  pull-requests: write  # slash commands may comment on PRs
+  pull-requests: write
   id-token: write
 
 jobs:
   call-issue:
     uses: YiAgent/OpenCI/.github/workflows/issue.yml@feat/marketplace-reusable-workflows
+    with:
+      # Forward dispatch mode (empty for natural triggers — upstream
+      # then routes by github.event_name).
+      mode: ${{ github.event.inputs.mode || '' }}
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
       sentry-token:      ${{ secrets.SENTRY_TOKEN }}
