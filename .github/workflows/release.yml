@@ -21,4 +21,5 @@ jobs:
   call-release:
     uses: YiAgent/OpenCI/.github/workflows/release.yml@feat/marketplace-reusable-workflows
     with:
+      openci-ref: feat/marketplace-reusable-workflows
       mode: ${{ github.event.inputs.mode }}

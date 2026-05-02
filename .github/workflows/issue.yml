@@ -25,6 +25,7 @@ jobs:
   call-issue:
     uses: YiAgent/OpenCI/.github/workflows/issue.yml@feat/marketplace-reusable-workflows
     with:
+      openci-ref: feat/marketplace-reusable-workflows
       # Forward dispatch mode (empty for natural triggers — upstream
       # then routes by github.event_name).
       mode: ${{ github.event.inputs.mode || '' }}

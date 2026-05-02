@@ -34,6 +34,7 @@ jobs:
   call-pr-agent:
     uses: YiAgent/OpenCI/.github/workflows/pr-agent.yml@feat/marketplace-reusable-workflows
     with:
+      openci-ref: feat/marketplace-reusable-workflows
       mode:      ${{ github.event.inputs.mode }}
       pr-number: ${{ github.event.inputs.pr-number }}
     secrets:

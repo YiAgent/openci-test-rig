@@ -22,5 +22,6 @@ jobs:
   call-docs:
     uses: YiAgent/OpenCI/.github/workflows/docs.yml@feat/marketplace-reusable-workflows
     with:
+      openci-ref: feat/marketplace-reusable-workflows
       docs-dir: docs
       site-dir: site

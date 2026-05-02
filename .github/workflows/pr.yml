@@ -19,6 +19,7 @@ jobs:
   call-pr:
     uses: YiAgent/OpenCI/.github/workflows/pr.yml@feat/marketplace-reusable-workflows
     with:
+      openci-ref: feat/marketplace-reusable-workflows
       enable-ai-review: true
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
