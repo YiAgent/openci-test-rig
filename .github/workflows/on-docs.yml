@@ -1,0 +1,23 @@
+# test-rig on-docs — exercises docs.yml.
+name: on-docs
+
+on:
+  pull_request:
+    paths: ["docs/**", "**/*.md"]
+  push:
+    branches: [main]
+    paths: ["docs/**", "**/*.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  docs:
+    uses: YiAgent/OpenCI/.github/workflows/docs.yml@v3.0.0-rc3
+    with:
+      openci-ref: v3.0.0-rc3
+      docs-dir:   docs
+      site-dir:   site
