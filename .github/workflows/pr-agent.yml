@@ -35,7 +35,9 @@ jobs:
     uses: YiAgent/OpenCI/.github/workflows/pr-agent.yml@feat/marketplace-reusable-workflows
     with:
       openci-ref: feat/marketplace-reusable-workflows
+      model: glm-5.1
       mode:      ${{ github.event.inputs.mode }}
       pr-number: ${{ github.event.inputs.pr-number }}
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url:      ${{ secrets.ANTHROPIC_BASE_URL }}
