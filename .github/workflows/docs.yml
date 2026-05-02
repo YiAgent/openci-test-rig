@@ -1,4 +1,8 @@
 # Test wrapper for OpenCI consolidated docs.yml.
+#
+# Reusable workflows inherit the *caller's* permission cap. We grant the
+# union needed by docs.yml (contents: read for build, pages + id-token
+# for the deploy job).
 name: openci-docs-rig
 
 on:
@@ -9,7 +13,10 @@ on:
     paths: ["docs/**", "*.md"]
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   call-docs:

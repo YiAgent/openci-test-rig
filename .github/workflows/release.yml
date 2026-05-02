@@ -1,8 +1,4 @@
 # Test wrapper for OpenCI consolidated release.yml.
-#
-# Real tag pushes would create a real GitHub Release; for the rig we only
-# exercise via workflow_dispatch with mode=marketplace (skip docker since
-# the rig has no Dockerfile).
 name: openci-release-rig
 
 on:
@@ -15,7 +11,11 @@ on:
         options: [marketplace, docker, both]
         default: marketplace
 
-permissions: {}
+# marketplace: contents:write (tags). docker: packages:write + id-token (cosign).
+permissions:
+  contents: write
+  packages: write
+  id-token: write
 
 jobs:
   call-release:

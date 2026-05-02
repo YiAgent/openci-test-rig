@@ -21,7 +21,14 @@ on:
         required: true
         type: string
 
-permissions: {}
+# Union of permissions across summarise / feedback / docubot / test-gen.
+permissions:
+  contents: read
+  actions: read
+  checks: read
+  issues: write
+  pull-requests: write
+  id-token: write
 
 jobs:
   call-pr-agent:

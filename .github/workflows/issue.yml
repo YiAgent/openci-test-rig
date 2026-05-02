@@ -1,8 +1,4 @@
 # Test wrapper for OpenCI consolidated issue.yml.
-#
-# Routes every issue-domain trigger to the upstream reusable workflow.
-# Set ANTHROPIC_API_KEY / SENTRY_TOKEN / LINEAR_TOKEN to exercise the
-# corresponding modes; missing secrets will graceful-skip.
 name: openci-issue-rig
 
 on:
@@ -21,7 +17,12 @@ on:
         default: ai-triage
         options: [sentry-triage, auto-label, dedupe, ai-triage, auto-assign]
 
-permissions: {}
+# Union of permissions needed across all jobs in upstream issue.yml.
+permissions:
+  contents: write       # linear-branch creates a branch
+  issues: write
+  pull-requests: write  # slash commands may comment on PRs
+  id-token: write
 
 jobs:
   call-issue:

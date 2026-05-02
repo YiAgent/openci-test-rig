@@ -1,7 +1,4 @@
 # Test wrapper for OpenCI consolidated prd-observe.yml.
-#
-# Cron triggers omitted in the rig — they'd just spam advisory issues.
-# Use workflow_dispatch to manually exercise each mode.
 name: openci-prd-observe-rig
 
 on:
@@ -17,7 +14,13 @@ on:
         required: false
         default: infrastructure
 
-permissions: {}
+# canary-watch + verify-fix may file issues; verify-fix may comment on PRs;
+# terraform-drift uses id-token (Terraform Cloud OIDC).
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  id-token: write
 
 jobs:
   call-prd-observe:

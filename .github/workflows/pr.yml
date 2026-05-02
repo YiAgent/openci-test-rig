@@ -4,7 +4,16 @@ name: openci-pr-rig
 on:
   pull_request:
 
-permissions: {}
+# pr.yml fans out lint/test/scan/build/agent-review jobs that need a wide
+# permission union.
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  issues: write
+  pull-requests: write
+  security-events: write
+  id-token: write
 
 jobs:
   call-pr:
