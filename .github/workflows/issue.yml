@@ -29,7 +29,11 @@ jobs:
       # Forward dispatch mode (empty for natural triggers — upstream
       # then routes by github.event_name).
       mode: ${{ github.event.inputs.mode || '' }}
+      # GLM-via-Anthropic-shim test: keep secret name 'anthropic-api-key'
+      # and point Claude at the Zhipu endpoint via api-base-url.
+      model: glm-5.1
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url:      ${{ secrets.ANTHROPIC_BASE_URL }}
       sentry-token:      ${{ secrets.SENTRY_TOKEN }}
       linear-token:      ${{ secrets.LINEAR_TOKEN }}
