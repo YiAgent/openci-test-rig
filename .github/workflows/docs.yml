@@ -1,0 +1,19 @@
+# Test wrapper for OpenCI consolidated docs.yml.
+name: openci-docs-rig
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**", "*.md"]
+  pull_request:
+    paths: ["docs/**", "*.md"]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  call-docs:
+    uses: YiAgent/OpenCI/.github/workflows/docs.yml@feat/marketplace-reusable-workflows
+    with:
+      docs-dir: docs
+      site-dir: site

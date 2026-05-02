@@ -1,0 +1,15 @@
+# Test wrapper for OpenCI consolidated pr.yml quality gate.
+name: openci-pr-rig
+
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  call-pr:
+    uses: YiAgent/OpenCI/.github/workflows/pr.yml@feat/marketplace-reusable-workflows
+    with:
+      enable-ai-review: true
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}

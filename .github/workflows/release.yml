@@ -1,0 +1,24 @@
+# Test wrapper for OpenCI consolidated release.yml.
+#
+# Real tag pushes would create a real GitHub Release; for the rig we only
+# exercise via workflow_dispatch with mode=marketplace (skip docker since
+# the rig has no Dockerfile).
+name: openci-release-rig
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Release facets to run
+        required: true
+        type: choice
+        options: [marketplace, docker, both]
+        default: marketplace
+
+permissions: {}
+
+jobs:
+  call-release:
+    uses: YiAgent/OpenCI/.github/workflows/release.yml@feat/marketplace-reusable-workflows
+    with:
+      mode: ${{ github.event.inputs.mode }}

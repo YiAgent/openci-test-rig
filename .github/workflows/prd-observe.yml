@@ -1,0 +1,29 @@
+# Test wrapper for OpenCI consolidated prd-observe.yml.
+#
+# Cron triggers omitted in the rig — they'd just spam advisory issues.
+# Use workflow_dispatch to manually exercise each mode.
+name: openci-prd-observe-rig
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Which observer to run
+        required: true
+        type: choice
+        options: [canary-watch, terraform-drift, verify-fix]
+      infra-dir:
+        description: (terraform-drift only) infra directory path
+        required: false
+        default: infrastructure
+
+permissions: {}
+
+jobs:
+  call-prd-observe:
+    uses: YiAgent/OpenCI/.github/workflows/prd-observe.yml@feat/marketplace-reusable-workflows
+    with:
+      mode:      ${{ github.event.inputs.mode }}
+      infra-dir: ${{ github.event.inputs.infra-dir }}
+    secrets:
+      sentry-token: ${{ secrets.SENTRY_TOKEN }}

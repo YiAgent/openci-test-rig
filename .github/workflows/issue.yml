@@ -1,0 +1,32 @@
+# Test wrapper for OpenCI consolidated issue.yml.
+#
+# Routes every issue-domain trigger to the upstream reusable workflow.
+# Set ANTHROPIC_API_KEY / SENTRY_TOKEN / LINEAR_TOKEN to exercise the
+# corresponding modes; missing secrets will graceful-skip.
+name: openci-issue-rig
+
+on:
+  issues:
+    types: [opened, reopened, edited]
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Force a specific mode through workflow_dispatch
+        required: false
+        type: choice
+        default: ai-triage
+        options: [sentry-triage, auto-label, dedupe, ai-triage, auto-assign]
+
+permissions: {}
+
+jobs:
+  call-issue:
+    uses: YiAgent/OpenCI/.github/workflows/issue.yml@feat/marketplace-reusable-workflows
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      sentry-token:      ${{ secrets.SENTRY_TOKEN }}
+      linear-token:      ${{ secrets.LINEAR_TOKEN }}
