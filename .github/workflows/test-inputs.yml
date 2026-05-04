@@ -2,5 +2,7 @@ name: test-inputs
 on:
   workflow_dispatch:
 jobs:
-  test-k:
-    uses: YiAgent/OpenCI/.github/workflows/_test-k.yml@546d4d193ca9678c9976868733e3352555fbe92f
+  test-deps:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@v3.1
+    with:
+      runner: ubuntu-latest
