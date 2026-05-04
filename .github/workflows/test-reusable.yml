@@ -5,6 +5,6 @@ on:
 
 jobs:
   call-deps:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@main
+    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@8abd56ca266671e47760ae259a91d3eb6fc63ade
     with:
       runner: ubuntu-latest
