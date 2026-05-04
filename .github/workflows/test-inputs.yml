@@ -2,11 +2,5 @@ name: test-inputs
 on:
   workflow_dispatch:
 jobs:
-  g:
-    uses: ./.github/workflows/_test-g.yml
-  h:
-    uses: ./.github/workflows/_test-h.yml
-  i:
-    uses: ./.github/workflows/_test-i.yml
-  j:
-    uses: ./.github/workflows/_test-j.yml
+  test-j:
+    uses: YiAgent/OpenCI/.github/workflows/_test-j.yml@85baca8d8ed3e5861594c5cad3c96572662c1efd
