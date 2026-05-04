@@ -1,9 +1,0 @@
-name: test-d
-on:
-  workflow_call:
-jobs:
-  echo:
-    if: github.event.pull_request.user.login == 'test'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "test-d passed"

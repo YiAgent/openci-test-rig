@@ -1,9 +1,0 @@
-name: test-b
-on:
-  workflow_call:
-permissions: {}
-jobs:
-  echo:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "test-b passed"
