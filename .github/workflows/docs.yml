@@ -20,8 +20,12 @@ permissions:
 
 jobs:
   call-docs:
-    uses: YiAgent/OpenCI/.github/workflows/docs.yml@feat/marketplace-reusable-workflows
+    uses: YiAgent/OpenCI/.github/workflows/docs.yml@main
     with:
-      openci-ref: feat/marketplace-reusable-workflows
-      docs-dir: docs
+      openci-ref: main
+      docs-path: docs
       site-dir: site
+      model: glm-4.7
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url:      ${{ secrets.ANTHROPIC_BASE_URL }}

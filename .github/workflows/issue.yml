@@ -23,15 +23,15 @@ permissions:
 
 jobs:
   call-issue:
-    uses: YiAgent/OpenCI/.github/workflows/issue.yml@feat/marketplace-reusable-workflows
+    uses: YiAgent/OpenCI/.github/workflows/issue.yml@main
     with:
-      openci-ref: feat/marketplace-reusable-workflows
+      openci-ref: main
       # Forward dispatch mode (empty for natural triggers — upstream
       # then routes by github.event_name).
       mode: ${{ github.event.inputs.mode || '' }}
       # GLM-via-Anthropic-shim test: keep secret name 'anthropic-api-key'
       # and point Claude at the Zhipu endpoint via api-base-url.
-      model: glm-5.1
+      model: glm-4.7
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
       api-base-url:      ${{ secrets.ANTHROPIC_BASE_URL }}

@@ -1,0 +1,34 @@
+# Test wrapper for OpenCI consolidated ci.yml (CI pipeline).
+name: openci-ci-rig
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      image-name:
+        required: true
+        type: string
+        default: openci-test-app
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+  security-events: write
+  actions: write
+  issues: write
+
+jobs:
+  call-ci:
+    uses: YiAgent/OpenCI/.github/workflows/ci.yml@main
+    with:
+      openci-ref: main
+      model: glm-4.7
+      image-name: ${{ github.event.inputs.image-name || 'openci-test-app' }}
+      registry: ghcr.io
+      enable-ai-smoke: false
+    secrets:
+      registry-token: ${{ secrets.GITHUB_TOKEN }}
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}

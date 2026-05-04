@@ -1,0 +1,36 @@
+# Test wrapper for OpenCI staging deploy workflow.
+name: openci-stg-deploy-rig
+
+on:
+  workflow_dispatch:
+    inputs:
+      image-digest:
+        description: Container image digest
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+  actions: write
+
+jobs:
+  call-stg:
+    uses: YiAgent/OpenCI/.github/workflows/deploy.yml@main
+    with:
+      openci-ref: main
+      image-digest: ${{ github.event.inputs.image-digest }}
+      image-name: openci-test-app
+      registry: ghcr.io
+      app-name: openci-test-app
+      deploy-type: docker
+      ssh-host: ${{ vars.STG_SSH_HOST }}
+      ssh-user: ${{ vars.STG_SSH_USER || 'deploy' }}
+      ssh-port: ${{ vars.STG_SSH_PORT || '22' }}
+      deploy-mode: compose
+      compose-file: docker-compose.yml
+      compose-project-dir: /home/deploy/openci-test-app
+      health-url: ${{ vars.STG_HEALTH_URL || '' }}
+    secrets:
+      ssh-key-stg: ${{ secrets.SSH_KEY_STG }}
+      slack-webhook-url: ${{ secrets.SLACK_CI_WEBHOOK }}

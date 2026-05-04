@@ -1,4 +1,5 @@
-# Test wrapper for OpenCI consolidated pr-agent.yml.
+# Test wrapper for OpenCI pr-agent functionality via pr.yml mode routing.
+# The pr-agent functionality is now part of pr.yml with a mode input.
 name: openci-pr-agent-rig
 
 on:
@@ -32,10 +33,10 @@ permissions:
 
 jobs:
   call-pr-agent:
-    uses: YiAgent/OpenCI/.github/workflows/pr-agent.yml@feat/marketplace-reusable-workflows
+    uses: YiAgent/OpenCI/.github/workflows/pr.yml@main
     with:
-      openci-ref: feat/marketplace-reusable-workflows
-      model: glm-5.1
+      openci-ref: main
+      model: glm-4.7
       mode:      ${{ github.event.inputs.mode }}
       pr-number: ${{ github.event.inputs.pr-number }}
     secrets:

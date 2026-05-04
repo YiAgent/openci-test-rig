@@ -24,9 +24,9 @@ permissions:
 
 jobs:
   call-prd-observe:
-    uses: YiAgent/OpenCI/.github/workflows/prd-observe.yml@feat/marketplace-reusable-workflows
+    uses: YiAgent/OpenCI/.github/workflows/prd-observe.yml@main
     with:
-      openci-ref: feat/marketplace-reusable-workflows
+      openci-ref: main
       mode:      ${{ github.event.inputs.mode }}
       infra-dir: ${{ github.event.inputs.infra-dir }}
     secrets:

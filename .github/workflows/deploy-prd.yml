@@ -1,0 +1,36 @@
+# Test wrapper for OpenCI production deploy workflow.
+name: openci-prd-deploy-rig
+
+on:
+  workflow_dispatch:
+    inputs:
+      image-digest:
+        description: Container image digest
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+  actions: write
+
+jobs:
+  call-prd:
+    uses: YiAgent/OpenCI/.github/workflows/deploy.yml@main
+    with:
+      openci-ref: main
+      image-digest: ${{ github.event.inputs.image-digest }}
+      image-name: openci-test-app
+      registry: ghcr.io
+      app-name: openci-test-app
+      deploy-type: docker
+      ssh-host: ${{ vars.PRD_SSH_HOST }}
+      ssh-user: ${{ vars.PRD_SSH_USER || 'deploy' }}
+      ssh-port: ${{ vars.PRD_SSH_PORT || '22' }}
+      deploy-mode: compose
+      compose-file: docker-compose.yml
+      compose-project-dir: /home/deploy/openci-test-app
+      health-url: ${{ vars.PRD_HEALTH_URL || '' }}
+    secrets:
+      ssh-key-prd: ${{ secrets.SSH_KEY_PRD }}
+      slack-webhook-url: ${{ secrets.SLACK_CI_WEBHOOK }}

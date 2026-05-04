@@ -19,7 +19,9 @@ permissions:
 
 jobs:
   call-release:
-    uses: YiAgent/OpenCI/.github/workflows/release.yml@feat/marketplace-reusable-workflows
+    uses: YiAgent/OpenCI/.github/workflows/release.yml@main
     with:
-      openci-ref: feat/marketplace-reusable-workflows
+      openci-ref: main
       mode: ${{ github.event.inputs.mode }}
+      image-name: openci-test-app
+      registry: ghcr.io

@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: task-board-backend
+    ports:
+      - "8000:8000"
+    networks:
+      - task-board-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: task-board-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+      - NEXT_TELEMETRY_DISABLED=1
+    depends_on:
+      - backend
+    networks:
+      - task-board-network
+
+networks:
+  task-board-network:
+    driver: bridge
