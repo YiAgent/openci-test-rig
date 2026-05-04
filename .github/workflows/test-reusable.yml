@@ -1,0 +1,10 @@
+name: test-reusable
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-deps:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@main
+    with:
+      runner: ubuntu-latest
