@@ -1,8 +1,0 @@
-name: test-cross
-on:
-  workflow_dispatch:
-jobs:
-  test-complex:
-    uses: YiAgent/OpenCI/.github/workflows/test-complex-reusable.yml@c50a642d6d6ff29a544d3ad1bc80985375534418
-    with:
-      runner: ubuntu-latest
