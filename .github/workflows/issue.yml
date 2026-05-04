@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   call-issue:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-issue.yml@main
+    uses: YiAgent/OpenCI/.github/workflows/reusable-issue.yml@v3.1
     with:
       openci-ref: main
       # Forward dispatch mode (empty for natural triggers — upstream
