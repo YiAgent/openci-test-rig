@@ -3,6 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    uses: YiAgent/OpenCI/.github/workflows/_test-no-env.yml@599fe5bc8644148ccd64a4ae785c2f3650d53011
+    uses: YiAgent/OpenCI/.github/workflows/_test-no-perm.yml@cb07e47538eca2ea64dd379fed175912d72cc6f9
     with:
       runner: ubuntu-latest
