@@ -2,13 +2,11 @@ name: test-all-workflows
 on:
   workflow_dispatch:
 jobs:
-  test-docs:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-docs.yml@v3.1
+  test-issue:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-issue.yml@v3.1
     with:
-      docs-path: docs
-      site-dir: site
-      enable-agent: false
-      deploy-docs: false
+      mode: lifecycle
+      runner: ubuntu-latest
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
       api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}
