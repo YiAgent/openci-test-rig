@@ -33,12 +33,11 @@ permissions:
 
 jobs:
   call-pr-agent:
-    uses: YiAgent/OpenCI/.github/workflows/pr.yml@main
+    uses: YiAgent/OpenCI/.github/workflows/reusable-pr.yml@main
     with:
       openci-ref: main
       model: glm-4.7
-      mode:      ${{ github.event.inputs.mode }}
-      pr-number: ${{ github.event.inputs.pr-number }}
+      enable-ai-review: true
     secrets:
       anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
       api-base-url:      ${{ secrets.ANTHROPIC_BASE_URL }}
