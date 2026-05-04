@@ -7,4 +7,9 @@ jobs:
   call-internal:
     uses: ./.github/workflows/_test-reusable.yml
     with:
-      message: "internal reusable works"
+      message: "internal works"
+
+  call-v3-explicit:
+    uses: YiAgent/OpenCI/.github/workflows/deps.yml@refs/tags/v3
+    with:
+      runner: ubuntu-latest
