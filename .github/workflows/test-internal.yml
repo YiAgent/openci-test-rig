@@ -1,0 +1,18 @@
+name: test-internal
+on:
+  workflow_dispatch:
+jobs:
+  test-a:
+    uses: ./.github/workflows/_test-a.yml
+  test-b:
+    uses: ./.github/workflows/_test-b.yml
+  test-c:
+    uses: ./.github/workflows/_test-c.yml
+  test-d:
+    uses: ./.github/workflows/_test-d.yml
+  test-e:
+    uses: ./.github/workflows/_test-e.yml
+  test-f:
+    uses: ./.github/workflows/_test-f.yml
+    with:
+      runner: ubuntu-latest

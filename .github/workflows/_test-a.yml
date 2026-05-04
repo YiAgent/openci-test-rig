@@ -1,0 +1,8 @@
+name: test-a
+on:
+  workflow_call:
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test-a passed"

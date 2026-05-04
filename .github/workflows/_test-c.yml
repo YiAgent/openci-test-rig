@@ -1,0 +1,11 @@
+name: test-c
+on:
+  workflow_call:
+concurrency:
+  group: test-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test-c passed"
