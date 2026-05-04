@@ -1,6 +1,21 @@
 name: test-inputs
 on:
   workflow_dispatch:
+    inputs:
+      image-name:
+        type: string
+        default: openci-test-app
 jobs:
-  test-l:
-    uses: YiAgent/OpenCI/.github/workflows/_test-l.yml@4a2d5af685549fc4928b9a701cc094661e49bd4a
+  test:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-ci.yml@3f61d81b4f7fd0b54309cbc096707c75a825f52b
+    with:
+      openci-ref: 3f61d81b4f7fd0b54309cbc096707c75a825f52b
+      model: glm-4.7
+      image-name: openci-test-app
+      registry: ghcr.io
+      enable-ai-smoke: false
+      enable-failure-agent: false
+    secrets:
+      registry-token: ${{ secrets.GITHUB_TOKEN }}
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}
