@@ -1,0 +1,15 @@
+name: test-caller
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-internal:
+    uses: ./.github/workflows/_test-reusable.yml
+    with:
+      message: "internal reusable works"
+
+  call-external:
+    uses: YiAgent/OpenCI/.github/workflows/deps.yml@v3
+    with:
+      runner: ubuntu-latest
