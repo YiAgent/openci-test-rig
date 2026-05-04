@@ -3,6 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    uses: YiAgent/OpenCI/.github/workflows/_test-stripped.yml@c673a380cfd3f34b07997ec33a65c378ed49708c
+    uses: YiAgent/OpenCI/.github/workflows/_test-no-if.yml@425f7339dc91abf536e5daa6a9ecead8a619cdcb
     with:
       runner: ubuntu-latest
