@@ -3,4 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    uses: YiAgent/OpenCI/.github/workflows/_test-unicode.yml@0745d78c6d50bb7673f4375e7b6912639dfa62fc
+    uses: YiAgent/OpenCI/.github/workflows/_test-m.yml@30c37540baef5e07d6ae69d4033692c34d2563c9
+    with:
+      runner: ubuntu-latest
