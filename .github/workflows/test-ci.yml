@@ -2,7 +2,5 @@ name: test-ci
 on:
   workflow_dispatch:
 jobs:
-  empty-perm:
+  test:
     uses: YiAgent/OpenCI/.github/workflows/_test-empty-perm.yml@2cb7ff874b59f28373e0e710336f44c09ea70c77
-  write-perm:
-    uses: YiAgent/OpenCI/.github/workflows/_test-write-perm.yml@2cb7ff874b59f28373e0e710336f44c09ea70c77
