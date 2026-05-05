@@ -3,13 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-ci.yml@38a5563f61cf5957a38ebf4728cc1f0092212be2
+    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@38a5563f61cf5957a38ebf4728cc1f0092212be2
     with:
-      image-name: openci-test-app
-      model: glm-4.7
-      enable-ai-smoke: false
-      enable-failure-agent: false
-    secrets:
-      registry-token: ${{ secrets.GITHUB_TOKEN }}
-      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
-      api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}
+      runner: ubuntu-latest
