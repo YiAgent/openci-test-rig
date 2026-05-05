@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   call-docs:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-docs.yml@a3231202c05a0d1dd9d6e867ae660004f8451c59
+    uses: YiAgent/OpenCI/.github/workflows/reusable-docs.yml@b36e5e38be815146eb9e875477fe7b3499222b9a
     with:
       openci-ref: main
       docs-path: docs
