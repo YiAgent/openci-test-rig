@@ -16,6 +16,7 @@ on:
         options: [sentry-triage, auto-label, dedupe, ai-triage, auto-assign, command, linear-branch]
 
 permissions:
+  actions: read
   contents: write
   issues: write
   pull-requests: write
