@@ -1,6 +1,0 @@
-name: test-ci
-on:
-  workflow_dispatch:
-jobs:
-  test:
-    uses: YiAgent/OpenCI/.github/workflows/_test-write-perm.yml@2cb7ff874b59f28373e0e710336f44c09ea70c77
