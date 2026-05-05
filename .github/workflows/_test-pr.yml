@@ -1,0 +1,12 @@
+name: test-pr
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-pr.yml@a3231202c05a0d1dd9d6e867ae660004f8451c59
+    with:
+      enable-ai-review: false
+      model: glm-4.7
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}
