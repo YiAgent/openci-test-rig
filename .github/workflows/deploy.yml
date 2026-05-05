@@ -21,7 +21,7 @@ permissions:
 jobs:
   stg:
     if: inputs.environment == 'staging'
-    uses: YiAgent/OpenCI/.github/workflows/reusable-stg.yml@v3.1.17
+    uses: YiAgent/OpenCI/.github/workflows/reusable-stg.yml@v3.1.18
     with:
       openci-ref: fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
       image-digest: ${{ inputs.image-digest }}
@@ -42,7 +42,7 @@ jobs:
 
   prd:
     if: inputs.environment == 'production'
-    uses: YiAgent/OpenCI/.github/workflows/reusable-prd.yml@v3.1.17
+    uses: YiAgent/OpenCI/.github/workflows/reusable-prd.yml@v3.1.18
     with:
       openci-ref: fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
       image-digest: ${{ inputs.image-digest }}
