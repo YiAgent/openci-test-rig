@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-ci.yml@v3.1.9
+    uses: YiAgent/OpenCI/.github/workflows/reusable-ci.yml@38a5563f61cf5957a38ebf4728cc1f0092212be2
     with:
       image-name: openci-test-app
       model: glm-4.7
