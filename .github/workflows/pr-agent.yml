@@ -33,7 +33,7 @@ permissions:
 
 jobs:
   call-pr-agent:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-pr.yml@v3.1.16
+    uses: YiAgent/OpenCI/.github/workflows/reusable-pr.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
     with:
       openci-ref: main
       model: glm-4.7

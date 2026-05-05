@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   call-self-test:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-self-test.yml@v3.1.16
+    uses: YiAgent/OpenCI/.github/workflows/reusable-self-test.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
     with:
       runner: ubuntu-latest
       enable-zizmor: true

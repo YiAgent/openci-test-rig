@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   call-prd:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-prd.yml@v3.1.16
+    uses: YiAgent/OpenCI/.github/workflows/reusable-prd.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
     with:
       openci-ref: main
       image-digest: ${{ github.event.inputs.image-digest }}

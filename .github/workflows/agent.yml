@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   call-agent:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-agent.yml@v3.1.16
+    uses: YiAgent/OpenCI/.github/workflows/reusable-agent.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
     with:
       openci-ref: main
       task: ${{ inputs.task || 'claude-default' }}
