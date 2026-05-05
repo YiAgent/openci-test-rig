@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   call-stg:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-stg.yml@v3.1
+    uses: YiAgent/OpenCI/.github/workflows/reusable-stg.yml@fe3a90ebe57318c1612774a753290b1ce3c9d7c6
     with:
       openci-ref: main
       image-digest: ${{ github.event.inputs.image-digest }}

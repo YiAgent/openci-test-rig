@@ -1,8 +1,0 @@
-name: test-all
-on:
-  workflow_dispatch:
-jobs:
-  deps:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@fe3a90ebe57318c1612774a753290b1ce3c9d7c6
-    with:
-      runner: ubuntu-latest
