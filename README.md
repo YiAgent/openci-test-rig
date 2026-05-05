@@ -28,4 +28,3 @@ consolidated reusable workflows. Triggers fire as follows:
 |---|---|
 | `SENTRY_ORG` | Doppler `infra/prd` |
 | `SENTRY_PROJECT` | repo-specific; set to a known project slug |
-# v3.1.16 test
