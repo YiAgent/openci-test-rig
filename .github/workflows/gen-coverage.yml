@@ -1,6 +1,10 @@
 name: gen-coverage
 on:
   workflow_dispatch:
+    inputs:
+      dummy:
+        type: string
+        default: ""
 
 jobs:
   gen:
