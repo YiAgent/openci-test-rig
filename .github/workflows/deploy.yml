@@ -1,0 +1,62 @@
+# Unified deploy entry point — routes to stg/prd based on environment input.
+# Needed for OpenCI's concurrent deploy check which searches for "deploy.yml".
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        options: [staging, production]
+      image-digest:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+  actions: write
+
+jobs:
+  stg:
+    if: inputs.environment == 'staging'
+    uses: YiAgent/OpenCI/.github/workflows/reusable-stg.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
+    with:
+      openci-ref: fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
+      image-digest: ${{ inputs.image-digest }}
+      image-name: openci-test-app
+      registry: ghcr.io
+      app-name: openci-test-app
+      deploy-type: docker
+      ssh-host: ${{ vars.STG_SSH_HOST }}
+      ssh-user: ${{ vars.STG_SSH_USER || 'deploy' }}
+      ssh-port: ${{ vars.STG_SSH_PORT || '22' }}
+      deploy-mode: compose
+      compose-file: docker-compose.yml
+      compose-project-dir: /home/deploy/openci-test-app
+      health-url: ${{ vars.STG_HEALTH_URL || '' }}
+    secrets:
+      ssh-key-stg: ${{ secrets.SSH_KEY_STG }}
+      slack-webhook-url: ${{ secrets.SLACK_CI_WEBHOOK }}
+
+  prd:
+    if: inputs.environment == 'production'
+    uses: YiAgent/OpenCI/.github/workflows/reusable-prd.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
+    with:
+      openci-ref: fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
+      image-digest: ${{ inputs.image-digest }}
+      image-name: openci-test-app
+      registry: ghcr.io
+      app-name: openci-test-app
+      deploy-type: docker
+      ssh-host: ${{ vars.PRD_SSH_HOST }}
+      ssh-user: ${{ vars.PRD_SSH_USER || 'deploy' }}
+      ssh-port: ${{ vars.PRD_SSH_PORT || '22' }}
+      deploy-mode: compose
+      compose-file: docker-compose.yml
+      compose-project-dir: /home/deploy/openci-test-app
+      health-url: ${{ vars.PRD_HEALTH_URL || '' }}
+    secrets:
+      ssh-key-prd: ${{ secrets.SSH_KEY_PRD }}
+      slack-webhook-url: ${{ secrets.SLACK_CI_WEBHOOK }}
