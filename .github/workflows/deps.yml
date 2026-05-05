@@ -1,0 +1,19 @@
+# Test wrapper for OpenCI reusable-deps.yml.
+# NOTE: Job guard checks for renovate[bot] user + patch label.
+# On workflow_dispatch the job will skip -- this validates guard logic.
+name: openci-deps-rig
+
+on:
+  pull_request_target:
+    types: [opened, labeled, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  call-deps:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-deps.yml@v3.1.16
+    with:
+      runner: ubuntu-latest

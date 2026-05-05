@@ -1,0 +1,34 @@
+# Test wrapper for OpenCI reusable-maintenance.yml.
+name: openci-maintenance-rig
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Execution mode
+        required: false
+        type: choice
+        default: scan-only
+        options:
+          - full
+          - scan-only
+          - deps-only
+
+permissions:
+  contents: read
+  security-events: write
+  packages: read
+  id-token: write
+  issues: write
+  actions: write
+  pull-requests: read
+
+jobs:
+  call-maintenance:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-maintenance.yml@v3.1.16
+    with:
+      openci-ref: main
+      mode: ${{ inputs.mode || 'scan-only' }}
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url:      ${{ secrets.ANTHROPIC_BASE_URL }}

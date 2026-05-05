@@ -1,0 +1,38 @@
+# Test wrapper for OpenCI reusable-agent.yml (AI harness).
+name: openci-agent-rig
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: Agent task name
+        required: false
+        type: string
+        default: claude-default
+      prompt:
+        description: Direct prompt or slash command
+        required: false
+        type: string
+        default: "/heartbeat"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+  actions: read
+
+jobs:
+  call-agent:
+    uses: YiAgent/OpenCI/.github/workflows/reusable-agent.yml@v3.1.16
+    with:
+      openci-ref: main
+      task: ${{ inputs.task || 'claude-default' }}
+      prompt: ${{ inputs.prompt || '/heartbeat' }}
+      model: glm-4.7
+      max-turns: 5
+      timeout-minutes: 10
+    secrets:
+      api-key:      ${{ secrets.ANTHROPIC_API_KEY }}
+      api-base-url: ${{ secrets.ANTHROPIC_BASE_URL }}
+      github-token: ${{ secrets.GH_TOKEN }}
