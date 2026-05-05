@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   call-release:
-    uses: YiAgent/OpenCI/.github/workflows/reusable-release.yml@fcbc0d2fa12550d5cb10131d38ce4d3f41c86315
+    uses: YiAgent/OpenCI/.github/workflows/reusable-release.yml@v3.1.17
     with:
       openci-ref: main
       mode: ${{ github.event.inputs.mode }}
