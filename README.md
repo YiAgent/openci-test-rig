@@ -28,3 +28,7 @@ consolidated reusable workflows. Triggers fire as follows:
 |---|---|
 | `SENTRY_ORG` | Doppler `infra/prd` |
 | `SENTRY_PROJECT` | repo-specific; set to a known project slug |
+
+## Workflow test sweep
+
+This section is added to trigger docs.yml + pr.yml on PR for the workflow test sweep.
